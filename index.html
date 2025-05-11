@@ -179,6 +179,33 @@
              100% { box-shadow: 4px 4px var(--color-paragon-dark); }
          }
 
+         .btn-secondary {
+            display: inline-block;
+            background-color: transparent; /* Transparent background */
+            color: var(--color-paragon-light); /* Light text color */
+            padding: 14px 28px; /* Larger padding */
+            border-radius: 4px;
+            font-family: 'Press Start 2P', cursive;
+            text-transform: uppercase;
+            text-shadow: 1px 1px var(--color-paragon-dark);
+            box-shadow: 2px 2px var(--color-paragon-light); /* Lighter shadow */
+            transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.1s ease, color 0.3s ease;
+            border: 2px solid var(--color-paragon-light); /* Outline border */
+            cursor: pointer; /* Indicate clickable */
+            margin-left: 1rem; /* Space from primary button */
+         }
+
+         .btn-secondary:hover {
+             background-color: rgba(212, 192, 161, 0.1); /* Subtle background on hover */
+             transform: translateY(-2px); /* Lift effect */
+             box-shadow: 4px 4px var(--color-paragon-light); /* More pronounced shadow */
+             color: var(--color-paragon-gold); /* Change text color on hover */
+         }
+          .btn-secondary:active {
+            transform: translateY(0px); /* Press down */
+            box-shadow: 2px 2px var(--color-paragon-light);
+          }
+
 
         .list-item-themed::before {
             content: '✦ '; /* Simple bullet point icon */
@@ -260,7 +287,7 @@
             </p>
              <div class="text-center mt-12">
                  <a href="#gameplay" class="btn-primary">Discover Gameplay</a>
-             </div>
+                 <a href="https://docs.google.com/document/d/1KQOutqlNJ_Eh-vYSGrspKHLJprC1Bzwk_mIyk2sg6EQ/edit?usp=sharing" class="btn-secondary">Read Documentation</a> </div>
         </div>
     </section>
 
@@ -298,8 +325,8 @@
                     <h3 class="text-2xl font-semibold mb-4">Consensual PvP System</h3>
                     <ul class="list-inside text-paragon-light">
                         <li class="list-item-themed">Combat requires explicit player <strong>"acceptance."</strong></li>
-                        <li class-item-themed>Flexible team sizes: <strong>1v1 to 5v5</strong> in dedicated <strong>Arenas</strong>.</li>
-                        <li class-item-themed>Winners take agreed-upon <strong>Staked Rewards</strong>.</li>
+                        <li class="list-item-themed">Flexible team sizes: <strong>1v1 to 5v5</strong> in dedicated <strong>Arenas</strong>.</li>
+                        <li class="list-item-themed">Winners take agreed-upon <strong>Staked Rewards</strong>.</li>
                     </ul>
                 </div>
                 <div class="card">
@@ -348,18 +375,18 @@
                     <h3 class="text-2xl font-semibold mb-4">Guilds & Strongholds</h3>
                     <ul class="list-inside text-paragon-light">
                         <li class="list-item-themed">Form or join <strong>Guilds</strong> for collaboration.</li>
-                        <li class-item-themed>Acquire/build <strong>Guild Strongholds</strong> (potentially NFTs).</li>
-                        <li class-item-themed>Compete for <strong>Territory Control</strong>.</li>
-                        <li class-item-themed>Manage a <strong>Guild Treasury</strong>.</li>
+                        <li class="list-item-themed">Acquire/build <strong>Guild Strongholds</strong> (potentially NFTs).</li>
+                        <li class="list-item-themed">Compete for <strong>Territory Control</strong>.</li>
+                        <li class="list-item-themed">Manage a <strong>Guild Treasury</strong>.</li>
                     </ul>
                 </div>
                 <div class="card">
                     <h3 class="text-2xl font-semibold mb-4">Engaging Social Features</h3>
                     <ul class="list-inside text-paragon-light">
-                        <li class-item-themed>Dynamic social hubs.</li>
-                        <li class-item-themed><strong>Mentorship Program</strong> for new players.</li>
-                        <li class-item-themed>Community events, player-organized tournaments with <strong>Spectator Mode</strong>.</li>
-                        <li class-item-themed><strong>DAO Governance:</strong> $ETHEL holders vote.</li>
+                        <li class="list-item-themed">Dynamic social hubs.</li>
+                        <li class="list-item-themed"><strong>Mentorship Program</strong> for new players.</li>
+                        <li class="list-item-themed">Community events, player-organized tournaments with <strong>Spectator Mode</strong>.</li>
+                        <li class="list-item-themed"><strong>DAO Governance:</strong> $ETHEL holders vote.</li>
                     </ul>
                 </div>
             </div>
@@ -415,22 +442,22 @@
                 <div class="illustration-item card">
                     <h3 class="text-xl font-semibold mb-4">Map Illustration</h3>
                     <img src="map.jpg" alt="Placeholder Map Illustration">
-                    <p class="text-sm text-paragon-light">A visual representation of the fractured realm of Arcadia.</p>
+                    <p class="text-sm text-paragon-light"></p>
                 </div>
                 <div class="illustration-item card">
                     <h3 class="text-xl font-semibold mb-4">Gameplay Illustration</h3>
-                    <img src="fight.jpg" alt="Placeholder Gameplay Illustration">
-                     <p class="text-sm text-paragon-light">Showcasing chibi heroes in action during consensual PvP or PvE boss battles.</p>
+                    <img src="fight2.jpg" alt="Placeholder Gameplay Illustration">
+                     <p class="text-sm text-paragon-light"></p>
                 </div>
                 <div class="illustration-item card">
                     <h3 class="text-xl font-semibold mb-4">Token Illustration</h3>
                     <img src="token.jpg" alt="Placeholder Token Illustration">
-                    <p class="text-sm text-paragon-light">Visualizing the $AURA and $ETHEL tokens or their in-game representation.</p>
+                    <p class="text-sm text-paragon-light"></p>
                 </div>
                  <div class="illustration-item card">
                     <h3 class="text-xl font-semibold mb-4">Relic Illustration</h3>
                     <img src="relic.jpg" alt="Placeholder Relic Illustration">
-                    <p class="text-sm text-paragon-light">Depicting the unique and powerful NFT Relic Artifacts.</p>
+                    <p class="text-sm text-paragon-light"></p>
                 </div>
             </div>
         </div>
