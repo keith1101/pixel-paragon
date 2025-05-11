@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pixel Paragons: Echoes of Aethelgard</title>
+    <title>Pixley Paragons: Echoes of Arcadia</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
@@ -32,40 +32,55 @@
             position: relative; /* Needed for pseudo-elements positioning */
         }
 
-        /* Animated Background Layer 1 */
-        body::before {
+        /* Animated Background Layer 1 applied to Header */
+        header::before {
             content: '';
-            position: fixed;
+            position: absolute; /* Position relative to the header */
             top: 0;
             left: 0;
-            width: 200%; /* Make it larger than viewport */
-            height: 200%; /* Make it larger than viewport */
+            width: 100%;
+            height: 100%;
+             /* Adjust background size and position for header area */
             background-image:
-                radial-gradient(circle at 20% 30%, rgba(240, 160, 64, 0.08) 0%, transparent 15%),
-                radial-gradient(circle at 80% 70%, rgba(96, 160, 96, 0.08) 0%, transparent 15%),
-                radial-gradient(circle at 50% 50%, rgba(64, 128, 160, 0.08) 0%, transparent 10%);
-            background-size: 50% 50%; /* Size of the gradient spots */
+                radial-gradient(circle at 20% 30%, rgba(240, 160, 64, 0.15) 0%, transparent 25%),
+                radial-gradient(circle at 80% 70%, rgba(96, 160, 96, 0.15) 0%, transparent 25%),
+                radial-gradient(circle at 50% 50%, rgba(64, 128, 160, 0.15) 0%, transparent 20%);
+            background-size: 80% 80%; /* Size of the gradient spots relative to header */
             animation: moveBackground1 40s linear infinite; /* Animation */
-            z-index: -1; /* Send behind content */
-            opacity: 0.6; /* Subtle effect */
+            z-index: 1; /* Place above the image but below header text */
+            opacity: 0.8; /* More visible effect over the image */
         }
 
-        /* Animated Background Layer 2 (for more depth) */
-         body::after {
+        /* Animated Background Layer 2 applied to Header (for more depth) */
+         header::after {
             content: '';
-            position: fixed;
+            position: absolute; /* Position relative to the header */
             top: 0;
             left: 0;
-            width: 200%; /* Make it larger than viewport */
-            height: 200%; /* Make it larger than viewport */
+            width: 100%;
+            height: 100%;
+             /* Adjust background size and position for header area */
             background-image:
-                radial-gradient(circle at 70% 20%, rgba(224, 80, 80, 0.05) 0%, transparent 10%),
-                radial-gradient(circle at 30% 80%, rgba(212, 192, 161, 0.05) 0%, transparent 10%);
-            background-size: 70% 70%; /* Different size */
+                radial-gradient(circle at 70% 20%, rgba(224, 80, 80, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 30% 80%, rgba(212, 192, 161, 0.1) 0%, transparent 20%);
+            background-size: 100% 100%; /* Different size */
             animation: moveBackground2 60s reverse linear infinite; /* Slower, reverse animation */
-            z-index: -2; /* Send even further behind */
-            opacity: 0.5; /* Subtle effect */
+            z-index: 2; /* Place above the first layer */
+            opacity: 0.7; /* More visible effect over the image */
          }
+
+        /* Ensure header content is above pseudo-elements */
+        header .container {
+            position: relative;
+            z-index: 3;
+        }
+
+        /* Style for the game title image */
+        header img {
+            /* Ensure image has a z-index below the pseudo-elements */
+            position: relative;
+            z-index: 0;
+        }
 
 
         @keyframes moveBackground1 {
@@ -73,8 +88,8 @@
             100% { background-position: 100% 100%; }
         }
          @keyframes moveBackground2 {
-            0% { background-position: 0 0; }
-            100% { background-position: 100% 100%; }
+            0% { background-position: 100% 100%; } /* Start at end for reverse */
+            100% { background-position: 0 0; } /* End at start for reverse */
          }
 
 
@@ -178,15 +193,61 @@
              color: var(--color-paragon-gold); /* Make strong text stand out */
              font-weight: inherit; /* Use inherited font weight */
          }
+
+         /* Styling for the Image Illustration Section */
+         .illustration-grid {
+             display: grid;
+             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+             gap: 2rem; /* Space between images */
+         }
+
+         .illustration-item {
+             background-color: var(--color-paragon-medium);
+             padding: 1rem;
+             border-radius: 8px;
+             box-shadow: 4px 4px var(--color-paragon-dark);
+             border: 2px solid var(--color-paragon-light);
+             text-align: center;
+         }
+
+         .illustration-item img {
+             display: block; /* Remove extra space below image */
+             max-width: 100%;
+             height: auto;
+             margin-bottom: 1rem;
+             border-radius: 4px;
+             border: 1px solid var(--color-paragon-dark);
+         }
+
+         .illustration-item h3 {
+             margin-top: 0; /* Remove default h3 margin */
+         }
+
+         /* Styling for Social Icons */
+         .social-icons a {
+             display: inline-block;
+             margin: 0 10px;
+             transition: transform 0.3s ease-in-out;
+         }
+
+         .social-icons a:hover {
+             transform: translateY(-5px); /* Lift effect on hover */
+         }
+
+         .social-icons svg {
+             width: 24px; /* Icon size */
+             height: 24px;
+             fill: var(--color-paragon-light); /* Icon color */
+         }
     </style>
 </head>
 <body class="antialiased">
 
     <header class="bg-paragon-dark text-white py-8 shadow-xl border-b-4 border-paragon-gold relative z-10 flex flex-col items-center">
         <div class="container mx-auto px-4 text-center flex flex-col items-center">
-            <img src="image.jpg" alt="Pixel Paragons: Echoes of Aethelgard Game Title Image" class="mx-auto max-w-full h-auto mb-4 rounded-md">
-            <h1 class="text-4xl md:text-5xl font-bold text-paragon-gold drop-shadow-lg">Pixel Paragons</h1>
-            <h1 class="text-2xl md:text-3xl font-bold text-paragon-gold drop-shadow-lg mt-1">Echoes of Aethelgard</h1>
+            <img src="imagee.jpg" alt="Pixley Paragons: Echoes of Arcadia Game Title Image" class="mx-auto max-w-full h-auto mb-4 rounded-md relative z-0">
+            <h1 class="text-4xl md:text-5xl font-bold text-paragon-gold drop-shadow-lg">Pixley Paragons</h1>
+            <h1 class="text-2xl md:text-3xl font-bold text-paragon-gold drop-shadow-lg mt-1">Echoes of Arcadia</h1>
             <p class="mt-3 text-lg md:text-xl font-semibold text-paragon-light">Forge Your Destiny, Claim Your Echoes: Where Chibi Heroes Own the Battlefield.</p>
         </div>
     </header>
@@ -195,7 +256,7 @@
         <div class="container mx-auto px-4">
             <h2 class="text-4xl font-bold text-center mb-12 section-title">The Pitch</h2>
             <p class="text-lg md:text-xl text-center max-w-4xl mx-auto text-paragon-light">
-                <strong>Pixel Paragons: Echoes of Aethelgard</strong> is a vibrant, open-world <strong>GameFi MMORPG</strong> where charming pixel chibi heroes explore a fractured medieval realm. Players grow their power by discovering unique, player-owned <strong>NFT Relics</strong>, which grant tangible combat advantages. The game features a revolutionary <strong>consensual PvP system</strong>, allowing flexible team battles (1v1 to 5v5) in dedicated arenas, ensuring no unwanted combat. With a robust <strong>player-driven economy</strong> for trading and auctioning NFTs and resources, deep guild interactions, and a dual-token ecosystem, "Pixel Paragons" offers a truly engaging <strong>play-and-own experience</strong> where strategy, social bonds, and digital ownership intertwine.
+                <strong>Pixley Paragons: Echoes of Arcadia</strong> is a vibrant, open-world <strong>GameFi MMORPG</strong> where charming pixel chibi heroes explore a fractured medieval realm. Players grow their power by discovering unique, player-owned <strong>NFT Relics</strong>, which grant tangible combat advantages. The game features a revolutionary <strong>consensual PvP system</strong>, allowing flexible team battles (1v1 to 5v5) in dedicated arenas, ensuring no unwanted combat. With a robust <strong>player-driven economy</strong> for trading and auctioning NFTs and resources, deep guild interactions, and a dual-token ecosystem, "Pixley Paragons" offers a truly engaging <strong>play-and-own experience</strong> where strategy, social bonds, and digital ownership intertwine.
             </p>
              <div class="text-center mt-12">
                  <a href="#gameplay" class="btn-primary">Discover Gameplay</a>
@@ -205,7 +266,7 @@
 
     <section id="core-concept" class="py-20 relative z-10">
         <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold mb-12 section-title">1. Core Concept</h2>
+            <h2 class="text-4xl font-bold mb-12 section-title">Core Concept</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
                 <div class="card">
                     <h3 class="text-2xl font-semibold mb-4">Genre & Style</h3>
@@ -214,7 +275,7 @@
                 </div>
                 <div class="card">
                     <h3 class="text-2xl font-semibold mb-4">Setting & Goal</h3>
-                    <p>Set in Aethelgard, a medieval fantasy kingdom shattered by a cataclysm. Players are "Pixel Paragons" seeking to gather fragmented ancient "Relics."</p>
+                    <p>Set in Arcadia, a medieval fantasy kingdom shattered by a cataclysm. Players are "Pixley Paragons" seeking to gather fragmented ancient "Relics."</p>
                     <p class="mt-2">Goal: Discover powerful Relic NFTs, master your class, dominate in strategic PvP, defeat bosses, and build community in a player-owned economy.</p>
                 </div>
             </div>
@@ -223,13 +284,13 @@
 
     <section id="gameplay" class="py-20 bg-paragon-medium relative z-10">
         <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold mb-12 section-title">2. Key Gameplay Pillars</h2>
+            <h2 class="text-4xl font-bold mb-12 section-title">Key Gameplay Pillars</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                 <div class="card">
                     <h3 class="text-2xl font-semibold mb-4">Exploration & Progression</h3>
                     <ul class="list-inside text-paragon-light">
                         <li class="list-item-themed">Explore a vast medieval world, complete diverse quests.</li>
-                        <li class="list-item-themed">Choose from Pixel Paragon classes.</li>
+                        <li class="list-item-themed">Choose from Pixley Paragon classes.</li>
                         <li class="list-item-themed">New players start in the safe <strong>Sanctuary Ward</strong>.</li>
                     </ul>
                 </div>
@@ -245,7 +306,7 @@
                     <h3 class="text-2xl font-semibold mb-4">Challenging PvE</h3>
                     <ul class="list-inside text-paragon-light">
                         <li class="list-item-themed">Battle monsters and challenging <strong>World/Dungeon Bosses</strong>.</li>
-                        <li class-item-themed>Rewards based on <strong>Damage Contribution</strong>.</li>
+                        <li class="list-item-themed">Rewards based on <strong>Damage Contribution</strong>.</li>
                     </ul>
                 </div>
                  <div class="card col-span-1 md:col-span-2 lg:col-span-3">
@@ -258,13 +319,13 @@
 
     <section id="gamefi-advantage" class="py-20 relative z-10">
         <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold mb-12 section-title">3. The GameFi Advantage</h2>
+            <h2 class="text-4xl font-bold mb-12 section-title">The GameFi Advantage</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
                 <div class="card">
                     <h3 class="text-2xl font-semibold mb-4">Dual-Token Economy</h3>
                     <ul class="list-inside text-paragon-light">
                         <li class="list-item-themed"><strong>$AURA (Utility Token):</strong> Earned from PvP, quests, boss damage. Used for crafting, repairs, consumables, battle fees, basic upgrades.</li>
-                        <li class-item-themed><strong>$ETHEL (Governance & Staking Token):</strong> Scarce. Earned from staking, high PvP ranks, boss contributions, DAO. Used for voting and exclusive content.</li>
+                        <li class="list-item-themed"><strong>$ETHEL (Governance & Staking Token):</strong> Scarce. Earned from staking, high PvP ranks, boss contributions, DAO. Used for voting and exclusive content.</li>
                     </ul>
                 </div>
                 <div class="card">
@@ -281,7 +342,7 @@
 
      <section id="community" class="py-20 bg-paragon-medium relative z-10">
         <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold mb-12 section-title">4. Community & Social Experience</h2>
+            <h2 class="text-4xl font-bold mb-12 section-title">Community & Social Experience</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
                 <div class="card">
                     <h3 class="text-2xl font-semibold mb-4">Guilds & Strongholds</h3>
@@ -307,23 +368,74 @@
 
     <section id="roadmap" class="py-20 relative z-10">
         <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold mb-12 section-title">5. Roadmap and Development</h2>
+            <h2 class="text-4xl font-bold mb-12 section-title">Roadmap and Development</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
                 <div class="card">
                     <h3 class="text-2xl font-semibold mb-4">Phase 1 (Alpha)</h3>
-                    <p class="text-paragon-light text-sm">Core mechanics, initial classes, 1v1-3v3 PvP, Bosses, <strong>$AURA</strong> & basic NFTs, initial Marketplace.</p>
+                    <ul class="list-inside text-paragon-light text-sm text-left">
+                        <li class="list-item-themed">Core mechanics</li>
+                        <li class="list-item-themed">Initial classes</li>
+                        <li class="list-item-themed">1v1-3v3 PvP</li>
+                        <li class="list-item-themed">Bosses</li>
+                        <li class="list-item-themed"><strong>$AURA</strong> & basic NFTs</li>
+                        <li class="list-item-themed">Initial Marketplace</li>
+                    </ul>
                 </div>
                 <div class="card">
                     <h3 class="text-2xl font-semibold mb-4">Phase 2 (Beta)</h3>
-                    <p class="text-paragon-light text-sm">Expand world/content, remaining classes, 5v5 PvP, Relic Artifact crafting, <strong>$ETHEL</strong> & basic DAO, Guilds, Mentorship.</p>
+                    <ul class="list-inside text-paragon-light text-sm text-left">
+                        <li class="list-item-themed">Expand world/content</li>
+                        <li class="list-item-themed">Remaining classes</li>
+                        <li class="list-item-themed">5v5 PvP</li>
+                        <li class="list-item-themed">Relic Artifact crafting</li>
+                        <li class="list-item-themed"><strong>$ETHEL</strong> & basic DAO</li>
+                        <li class="list-item-themed">Guilds (basic)</li>
+                        <li class="list-item-themed">Mentorship</li>
+                    </ul>
                 </div>
                 <div class="card">
                     <h3 class="text-2xl font-semibold mb-4">Phase 3 (Launch & Ongoing)</h3>
-                    <p class="text-paragon-light text-sm">Official Launch, Seasonal PvP, Guild Strongholds & Territory Control, ongoing updates, expanded DAO, potential cross-chain/mobile.</p>
+                    <ul class="list-inside text-paragon-light text-sm text-left">
+                        <li class="list-item-themed">Official Launch</li>
+                        <li class="list-item-themed">Seasonal PvP</li>
+                        <li class="list-item-themed">Guild Strongholds & Territory Control</li>
+                        <li class="list-item-themed">Ongoing content updates</li>
+                        <li class="list-item-themed">Expanded DAO</li>
+                        <li class="list-item-themed">Potential cross-chain/mobile</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
+
+    <section id="illustrations" class="py-20 bg-paragon-medium relative z-10">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 section-title">Illustrations</h2>
+            <div class="illustration-grid">
+                <div class="illustration-item card">
+                    <h3 class="text-xl font-semibold mb-4">Map Illustration</h3>
+                    <img src="map.jpg" alt="Placeholder Map Illustration">
+                    <p class="text-sm text-paragon-light">A visual representation of the fractured realm of Arcadia.</p>
+                </div>
+                <div class="illustration-item card">
+                    <h3 class="text-xl font-semibold mb-4">Gameplay Illustration</h3>
+                    <img src="fight.jpg" alt="Placeholder Gameplay Illustration">
+                     <p class="text-sm text-paragon-light">Showcasing chibi heroes in action during consensual PvP or PvE boss battles.</p>
+                </div>
+                <div class="illustration-item card">
+                    <h3 class="text-xl font-semibold mb-4">Token Illustration</h3>
+                    <img src="token.jpg" alt="Placeholder Token Illustration">
+                    <p class="text-sm text-paragon-light">Visualizing the $AURA and $ETHEL tokens or their in-game representation.</p>
+                </div>
+                 <div class="illustration-item card">
+                    <h3 class="text-xl font-semibold mb-4">Relic Illustration</h3>
+                    <img src="relic.jpg" alt="Placeholder Relic Illustration">
+                    <p class="text-sm text-paragon-light">Depicting the unique and powerful NFT Relic Artifacts.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
 
     <section id="vision" class="py-20 bg-paragon-green text-white border-t-4 border-paragon-gold relative z-10">
         <div class="container mx-auto px-4 text-center">
@@ -336,8 +448,19 @@
 
     <footer class="bg-paragon-dark text-gray-400 py-8 text-center border-t-4 border-paragon-gold relative z-10">
         <div class="container mx-auto px-4">
-            <p>&copy; 2025 Pixel Paragons: Echoes of Aethelgard. All rights reserved.</p>
+            <p>&copy; 2025 Pixley Paragons: Echoes of Arcadia. All rights reserved.</p>
              <p class="text-sm mt-2">Designed by: Bùi Anh Huy</p>
+             <div class="social-icons mt-4">
+                <a href="https://github.com/keith1101" target="_blank" aria-label="GitHub">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.087-.744.084-.729.084-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.046.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.177.769.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.091 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                </a>
+                <a href="https://www.facebook.com/BAH.Keith.11A4" target="_blank" aria-label="Facebook">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.5-1.333h2.833v-3h-4.166c-3.156 0-5 1.767-5 4.667v1.333z"/></svg>
+                </a>
+                <a href="https://x.com/HuyAnh1720" target="_blank" aria-label="X (Twitter)">
+                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6.066 9.645c.188 3.593-2.314 7.425-6.632 7.425-1.334 0-2.58-.38-3.615-1.055.139.017.279.026.42.026 2.042 0 3.936-.698 5.432-1.881-1.906-.035-3.507-1.292-4.062-3.002.179.035.358.051.543.051.78 0 1.517-.103 2.221-.298-2.0-.403-3.54-2.179-3.54-4.313 0-.02-.001-.04-.001-.061.558.308 1.199.492 1.872.511-1.117-.742-1.859-2.01-1.859-3.435 0-.761.205-1.468.561-2.081 2.034 2.504 5.091 4.167 8.529 4.345-.063-.308-.098-.628-.098-.958 0-2.307 1.871-4.178 4.178-4.178 1.213 0 2.317.51 3.092 1.333.96-.189 1.856-.546 2.669-1.029-.314.974-.973 1.893-1.836 2.433.852-.091 1.673-.328 2.426-.669-.566.85-1.284 1.64-2.197 2.259z"/></svg>
+                </a>
+            </div>
         </div>
     </footer>
 
